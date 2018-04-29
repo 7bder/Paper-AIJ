@@ -10,6 +10,7 @@
 \usepackage{makecell} % 表线控制，较为简单
 \usepackage{rotating} % 表格横置的依赖包
 \usepackage{colortbl} % 表格上色依赖包
+\usepackage{xcolor} % 支持彩色字体
 
 \begin{document}
 \title{Analysis on the Influence factors of passenger by using small sample size of subway stations}
@@ -186,7 +187,7 @@ This study focuses on 35 subway stations in Fukuoka City (the sixth largest city
 	\label{fig:ResearchArea}
 \end{figure}
 
-% Table 1
+% Table 2
 \begin{table}[htbp]
 	\centering
 	\caption{Details for the three subway lines in Fukuoka}
@@ -235,7 +236,7 @@ At present, in the United States, a half-mile-radius (800 m) circle has become t
 
 In this study, the average daily ridership of each subway station is used as the dependent variable. There are 16 variables from the three categories being adopted as candidate independent factors (as shown in Table \ref{tab:StatisticalDescription}). Some of these variables have already been estimated many times in previous studies, however, there are still some indicators, which may help explain the variation of ridership, ignored in the previous studies. Besides, there is another problem that should be dealt with, the more comprehensive the index framework is, the problem of multicollinearity will occur more easily. For this problem, the candidate variables should be identified and selected by interpret ability in the next stage.
 
-% Table 2
+% Table 3
 \begin{sidewaystable}[htbp] % sidewaystable 表格横置，依赖于 rotating 包
 	\centering
 	\caption{Statistical description of candidate independent variables}
@@ -295,7 +296,7 @@ The land and buildings provide people space for living, working and recreating, 
 %
 The same with previous studies, this study choose several types of land use with higher proportion to assess the indicator of land use diversity, including residential, office, commercial, education. The four main types of land use account for about 90\% of all the floor area in Fukuoka, especially in subway catchment area, reaching more than 95\%. However, different from the general definition of land use diversity, the proportion of land use is not evenly distributed in the case of Fukuoka City. As shown in Table \ref{tab:LandUse}, obviously, it is significantly different from average distribution, and the proportion varies with the variation of the catchment area. To describe the land use diversity closer to the facts, the referenced balance proportion of land use types is decided by the average proportion of all subway station catchment area (800m pedestrian distance) in Fukuoka.
 
-% Table 3
+% Table 4
 \begin{table}[htbp]
 	\centering
 	\caption{Average proportion of each land use type in different PCA}
@@ -403,7 +404,7 @@ The exploratory regression tool in ArcGIS is introduced into this study to help 
 
 The first stage of selecting effective variables is conducted based on three judgment factors: a. Multicollinearity, which is expressed by the factor of VIF; b. Validity, which is expressed by the number of times that shows statistical importance; c. Stability, which is shown by the percentage of negative and positive effect to the dependent variable (Stage 1 in Table \ref{tab:ExploratoryRegression}). Generally, the variable is thought to be multicollinearity if the value of VIF factor is more than 7.5, as shown in Table \ref{note:ExploratoryRegression} there are four variables with higher VIF which are marked by dark color. For the factor of validity, three variables are filtered since they rarely show their statistical significance (less than 10\%). Even though some variables have statistical significances in the regression model, they are still not credible since their performances are not stable in different models (sometimes they are positive for the independent variable but sometimes are not). As shown in the underneath of stage 1 in Table \ref{note:ExploratoryRegression}, the three variables marked with grey are shown not stable in explaining dependent variable. Therefore, as a result, 10 valid variables of 16 candidate variables are reserved in the first stage.
 
-% Table 4
+% Table 5
 \begin{sidewaystable}[htbp]
 	\centering
 	\caption{Results of the exploratory regression}
@@ -487,7 +488,7 @@ GWR is a spatial regression technique, which is used for dealing with the explan
 %
 The MGWR is estimated using the GWR4 software. The determination of local or global is processed in two steps: firstly, using Moran’s index to examine if the variable is spatial autocorrelation or not; secondly, re-examining the variable with spatial dependency in terms of the indicator of “DIFF of Criterion” provided by GWR4. The test value describing the spatial relationship is summarized in the left part of Table \ref{tab:ResultMGWR}. Five variables are found to be spatial autocorrelation; they are transportation warehousing, bus capacity, bus accessibility and the tenant proportion respectively. Thereby in the first step, the other 4 variables are considered as global variables while the 5 variables with spatial dependency are considered as local variables. Nakaya, the author of the GWR4 software suggested in the GWR4 user manual that the assessment of the spatial variability of the $k$th varying coefficient is conducted by comparing the fitted GWR with a model in which only the $k$th coefficient is fixed while the other coefficients vary spatially \cite{Nakaya2012}. If the original model is better than the model with the kth coefficient fixed, that coefficient can be considered as spatial autocorrelation. GWR4 also provides the indicator of model comparison which is “DIFF of Criterion”. The user manual suggests that a positive value of “DIFF of Criterion”, especially greater than or equal to 2, means the local term is better to be assumed as a global one. As shown in the left part of Table \ref{tab:ResultMGWR}, all the values of indicator “DIFF of Criterion” are no more than 2, which means that all the local terms are adapt to the model. Therefore, all the local variables passed the test in the second step.
 
-% Table generated by Excel2LaTeX from sheet 'Sheet3'
+% Table 6
 \begin{sidewaystable}[htbp]
 	\centering
 	\caption{Results of MGWR model}
@@ -539,7 +540,7 @@ The MGWR model is estimated by using a fixed Gaussian kernel function and using 
 
 The right part of Table \ref{tab:ResultMGWR} reports the result of MGWR model. The global variables in MGWR model have statistical significance at 95\% confidence level, it means most of the variation in ridership can be explained by the 9 variables in this present model. The signs of all terms for local variables are consistent with that of OLS model in Table \ref{tab:ExploratoryRegression}, and the values of coefficients in MGWR maintain a high consistency with OLS model. The result shows that there are 3 variables, which are bus capacity, job-resident balance, and tenant proportion, impacting negative effect on ridership, while the others 6 variables play positive effect. The value of the explanatory variable changes by 1 unit, the subway passenger will change the value of the coefficient. It is interesting to note from the coefficient that although the variables of bus capacity and bus accessibility have a strong positive correlation with statistical significance, they perform completely opposite effect on the independent variable. Moreover, comparing with the result of OLS regression, the result of MGWR has an improvement in both adjusted R2 and AICc value, and there is a 12\% decrease in residual.
 
-% Table 6
+% Table 7
 \begin{table}[htbp]
 	\centering
 	\caption{Residual spatial autocorrelation of OLS and MGWR}
